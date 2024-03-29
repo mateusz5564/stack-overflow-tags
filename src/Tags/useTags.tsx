@@ -9,10 +9,9 @@ export const useTag = ({
   sort = SortTags.popular,
   order = Order.desc,
 }: UseTagOptions) => {
-
   const url = `https://api.stackexchange.com/2.3/tags?page=${page}&pagesize=${pageSize}&order=${order}&sort=${sort}&site=stackoverflow&filter=!nNPvSNVZBz`;
 
-  const { data, error, isLoading } = useSWR<TagsResponse>(url, fetcher);
+  const { data, error, isLoading } = useSWR<TagsResponse>(url, fetcher, { keepPreviousData: true });
 
   return {
     tagsResponse: data,
