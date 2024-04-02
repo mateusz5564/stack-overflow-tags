@@ -37,7 +37,7 @@ export default function TagsTable({ tags }: { tags: Tag[] | undefined }) {
               <TableCell component="th" scope="row">
                 {tag.name}
               </TableCell>
-              <TableCell align="right">{tag.count}</TableCell>
+              <TableCell align="right">{tag.count.toLocaleString()}</TableCell>
             </StyledTableRow>
           ))}
         </TableBody>
