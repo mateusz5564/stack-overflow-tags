@@ -9,7 +9,7 @@ export const useTag = ({
   sort = SortTags.popular,
   order = Order.desc,
 }: UseTagOptions) => {
-  const url = `https://api.stackexchange.com/2.3/tags?page=${page}&pagesize=${pageSize}&order=${order}&sort=${sort}&site=stackoverflow&filter=!nNPvSNVZBz`;
+  const url = `https://api.stackexchange.com/2.3/tags?key=${process.env.REACT_APP_API_KEY}&page=${page}&pagesize=${pageSize}&order=${order}&sort=${sort}&site=stackoverflow&filter=!nNPvSNVZBz`;
 
   const { data, error, isLoading } = useSWR<TagsResponse>(url, fetcher, { keepPreviousData: true });
 
