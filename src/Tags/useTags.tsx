@@ -1,7 +1,14 @@
 import useSWR from "swr";
 import { Order, SortTags, TagsResponse, UseTagOptions } from "./types";
 
-const fetcher = (url: string) => fetch(url).then(res => res.json());
+const fetcher = (url: string) =>
+  fetch(url).then(res => {
+    if (!res.ok) {
+      throw new Error("An error occured while fetching the data");
+    }
+
+    return res.json();
+  });
 
 export const useTag = ({
   page = 1,

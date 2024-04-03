@@ -44,7 +44,7 @@ const Tags = () => {
   };
 
   if (error) {
-    return <h2>Error!</h2>;
+    return <h2>Error! ({error?.message})</h2>;
   }
 
   return (
