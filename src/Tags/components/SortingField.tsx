@@ -8,7 +8,7 @@ const SortingField = ({
 }: {
   value: SortTags;
   onChange: (event: React.MouseEvent<HTMLElement, MouseEvent>, value: any) => void;
-  sx: SxProps;
+  sx?: SxProps;
 }) => {
   return (
     <ToggleButtonGroup

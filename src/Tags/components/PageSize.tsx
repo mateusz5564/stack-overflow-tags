@@ -10,7 +10,7 @@ const PageSize = ({
   defaultValue: number;
   setPageSize: React.Dispatch<React.SetStateAction<number>>;
   setPage: React.Dispatch<React.SetStateAction<number>>;
-  sx: SxProps;
+  sx?: SxProps;
 }) => {
   const [error, setError] = useState("");
 
