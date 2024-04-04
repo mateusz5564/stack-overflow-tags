@@ -33,7 +33,7 @@ const Tags = () => {
     if (sortingField !== null) {
       setSortingField(sortingField);
 
-      if (sortingField == SortTags.name) {
+      if (sortingField === SortTags.name) {
         setSortingOrder(Order.asc);
       }
     }
