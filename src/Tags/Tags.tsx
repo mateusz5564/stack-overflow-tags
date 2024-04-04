@@ -2,7 +2,7 @@ import { Order, SortTags } from "./types";
 import { useTag } from "./useTags";
 import TagsTable from "./components/TagsTable";
 import TagsPagination from "./components/TagsPagination";
-import { Box, CircularProgress, LinearProgress } from "@mui/material";
+import { Box, CircularProgress, LinearProgress, Typography, useTheme } from "@mui/material";
 import { useState } from "react";
 import { calculateNumberOfPages } from "../utils";
 import PageSize from "./components/PageSize";
@@ -20,6 +20,7 @@ const Tags = () => {
     sort: sortingField,
     order: sortingOrder,
   });
+  const theme = useTheme();
 
   const pagesCount =
     (tagsResponse?.total && calculateNumberOfPages(pageSize, tagsResponse?.total)) ?? 0;
@@ -49,7 +50,9 @@ const Tags = () => {
 
   return (
     <>
-      <h2>Stack Overflow Tags</h2>
+      <Typography variant="h5" my={3}>
+        Stack Overflow Tags
+      </Typography>
 
       {!tagsResponse?.items && isLoading && (
         <Box display={"flex"} justifyContent={"center"}>
@@ -61,13 +64,31 @@ const Tags = () => {
 
       {tagsResponse?.items && (
         <>
-          <Box display={"flex"} justifyContent={"flex-end"} flexWrap={"wrap"}>
-            <SortingField sx={{ mr: 1 }} value={sortingField} onChange={handleSortingFieldChange} />
+          <Box sx={theme => ({ display: "flex", flexDirection: "column", alignItems: "flex-end" })}>
+            <SortingField
+              sx={theme => ({ mb: 1 })}
+              value={sortingField}
+              onChange={handleSortingFieldChange}
+            />
             <SortingOrder value={sortingOrder} onChange={handleSortingOrderChange} />
           </Box>
-          <Box my={2} display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
+          <Box
+            sx={theme => ({
+              my: 2,
+              display: "flex",
+              flexDirection: "column",
+              [theme.breakpoints.up(450)]: {
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+              },
+            })}
+          >
             <PageSize
-              sx={{ mr: 2 }}
+              sx={{
+                my: 2,
+                [theme.breakpoints.up(450)]: { my: 0 },
+              }}
               defaultValue={pageSize}
               setPageSize={setPageSize}
               setPage={setPage}
