@@ -1,6 +1,7 @@
 # StackOverflow Tags browser
 
-Demo link: [preview app](https://mediporta-stackoverflow-tags.netlify.app/)
+Demo link: [preview app](https://mediporta-stackoverflow-tags.netlify.app/)  
+Storybook link: [preview storybook](https://stackoverflow-tags-storybook.netlify.app/)
 
 ## Tech stack
 
